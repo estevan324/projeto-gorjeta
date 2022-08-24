@@ -1,0 +1,7 @@
+{
+  "name": "prjGorjeta",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
