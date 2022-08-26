@@ -1,20 +1,67 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" class="ion-padding">
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <h3 id="title">Gorjetas</h3>
+    <div class="input-container">
+      <div>
+        <label for="order">Digite o valor total do pedido<font color="#DF4A4A">*</font></label>
+        <ion-input id="order" placeholder="Digite o valor aqui"
+          [ngStyle]="{'border': orderValue ? '1px solid #B1B9CC' : ''}" [(ngModel)]="orderValue">
+          <span slot="start">R$</span>
+        </ion-input>
+      </div>
+      <div class="percent-buttons">
+        <label for="order">Quanto quer dar de gorjeta?<font color="#DF4A4A">*</font></label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <input type="radio" name="percent" id="5" value="5" [(ngModel)]="tipPercent">
+              <label for="5">5%</label>
+            </ion-col>
+            <ion-col>
+              <input type="radio" name="percent" id="10" value="10" [(ngModel)]="tipPercent">
+              <label for="10">10%</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <input type="radio" name="percent" id="15" value="15" [(ngModel)]="tipPercent">
+              <label for="15">15%</label>
+            </ion-col>
+            <ion-col>
+              <input type="radio" name="percent" id="20" value="20" [(ngModel)]="tipPercent">
+              <label for="20">20%</label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div>
+        <ion-input id="order" placeholder="Personalize aqui" [(ngModel)]="customTip">
+          <span slot="start">%</span>
+        </ion-input>
+      </div>
+      <div style="margin-top: 15px;">
+        <label for="order">Quantas pessoas irão pagar?<font color="#DF4A4A">*</font>
+        </label>
+        <ion-input id="order" placeholder="Digite o valor aqui" [(ngModel)]="peopleAmount">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        </ion-input>
+      </div>
+      <div style="text-align: center; padding-bottom: 12px;">
+        <ion-button id="calculate-btn" (click)="calculate()">
+          CALCULAR
+        </ion-button>
+      </div>
+    </div>
+    <div class="result-container">
+      <label>Valor total da gorjeta</label>
+      <ion-input readonly [value]="totalTip">
+        <span slot="start">R$</span>
+      </ion-input>
+
+      <label>Valor que cada pessoa irá pagar de gorjeta</label>
+      <ion-input readonly [value]="splitTip">
+        <span slot="start">R$</span>
+      </ion-input>
+    </div>
   </div>
 </ion-content>

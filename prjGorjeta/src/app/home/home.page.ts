@@ -10,7 +10,10 @@ export class HomePage {
   calculator: TipCalculator
 
   orderValue: number
+
   tipPercent: number
+  customTip: number
+
   peopleAmount: number
   totalTip: number
   splitTip: number
@@ -21,7 +24,13 @@ export class HomePage {
 
   private calculate(){
     this.calculator.orderValue = this.orderValue
-    this.calculator.tipPercent = this.tipPercent
+    
+    if(this.customTip) {
+      this.calculator.tipPercent = this.customTip
+    } else {
+      this.calculator.tipPercent = this.tipPercent
+    }
+    
     this.calculator.peopleAmount = this.peopleAmount
 
     this.totalTip = this.calculator.calculateTip()
