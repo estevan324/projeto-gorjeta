@@ -3,14 +3,13 @@
     <h3 id="title">Gorjetas</h3>
     <div class="input-container">
       <div>
-        <label for="order">Digite o valor total do pedido<font color="#DF4A4A">*</font></label>
-        <ion-input id="order" placeholder="Digite o valor aqui"
-          [ngStyle]="{'border': orderValue ? '1px solid #B1B9CC' : ''}" [(ngModel)]="orderValue">
+        <label>Digite o valor total do pedido<font color="#DF4A4A">*</font></label>
+        <ion-input placeholder="Digite o valor aqui" [(ngModel)]="orderValue" [ngStyle]="{'border': invalid1 ? invalidColor : ''}">
           <span slot="start">R$</span>
         </ion-input>
       </div>
       <div class="percent-buttons">
-        <label for="order">Quanto quer dar de gorjeta?<font color="#DF4A4A">*</font></label>
+        <label>Quanto quer dar de gorjeta?<font color="#DF4A4A">*</font></label>
         <ion-grid>
           <ion-row>
             <ion-col>
@@ -35,31 +34,31 @@
         </ion-grid>
       </div>
       <div>
-        <ion-input id="order" placeholder="Personalize aqui" [(ngModel)]="customTip">
+        <ion-input placeholder="Personalize aqui" [(ngModel)]="customTip">
           <span slot="start">%</span>
         </ion-input>
       </div>
       <div style="margin-top: 15px;">
-        <label for="order">Quantas pessoas irão pagar?<font color="#DF4A4A">*</font>
+        <label>Quantas pessoas irão pagar?<font color="#DF4A4A">*</font>
         </label>
-        <ion-input id="order" placeholder="Digite o valor aqui" [(ngModel)]="peopleAmount">
+        <ion-input placeholder="Digite o valor aqui" [(ngModel)]="peopleAmount" [ngStyle]="{'border': invalid2 ? invalidColor : ''}">
         <ion-icon name="person-outline" slot="start"></ion-icon>
         </ion-input>
       </div>
       <div style="text-align: center; padding-bottom: 12px;">
-        <ion-button id="calculate-btn" (click)="calculate()">
+        <ion-button id="calculate-btn" (click)="verifyCalc()">
           CALCULAR
         </ion-button>
       </div>
     </div>
     <div class="result-container">
       <label>Valor total da gorjeta</label>
-      <ion-input readonly [value]="totalTip">
+      <ion-input readonly [value]="totalTip | number : '1.2-2'">
         <span slot="start">R$</span>
       </ion-input>
 
       <label>Valor que cada pessoa irá pagar de gorjeta</label>
-      <ion-input readonly [value]="splitTip">
+      <ion-input readonly [value]="splitTip | number : '1.2-2'">
         <span slot="start">R$</span>
       </ion-input>
     </div>
